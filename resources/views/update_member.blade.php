@@ -10,7 +10,7 @@
             @csrf
                 <div class="form-group">
                     <label for="member">Member Name</label>
-                    <input type="text" class="form-control" name="member_name" value="{{ $members->member }}">
+                    <input type="text" class="form-control" name="member_name" value="{{ $data->member }}" required>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Update</button>

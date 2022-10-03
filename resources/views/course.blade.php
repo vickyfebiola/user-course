@@ -8,9 +8,10 @@
                 <table class="table table-bordered data-table" id="dataTable">
                     <thead>
                         <tr>
+                            <th>no</th>
                             <th>id_course</th>
                             <th>course</th>
-                            <th> </th>
+                            <th>aksi</th>
                         </tr>
                     </thead>
                 </table>
@@ -27,13 +28,19 @@
         serverSide: true,
         ajax: "{{ route('course.index') }}",
         columns: [
+            { 
+                data: 'DT_RowIndex',
+                name: 'DT_RowIndex',
+                orderable: false,
+                searchable: false,
+            },
             {
                 data: 'id_course',
-                name: 'courses.id_course',
+                name: 'id_course',
             },
             {
                 data: 'course',
-                name: 'courses.course',
+                name: 'course',
             },
             {
                 data: 'action',

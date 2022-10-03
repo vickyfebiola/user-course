@@ -19,9 +19,9 @@
                         <div>
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="{{ route('data.index') }}">Beranda <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="{{ route('data.index') }}">Beranda <span class="sr-only">(current)</span></a>
                                 </li>
-                                <li class="nav-item" active>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('soal') }}">Soal</a>
                                 </li>
 
@@ -31,8 +31,9 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('member.index') }}">Members</a>
-                                        <a class="dropdown-item" href="{{ route('mentor.index') }}">Mentors</a>
                                         <a class="dropdown-item" href="{{ route('course.index') }}">Courses</a>
+                                        <a class="dropdown-item" href="{{ route('mentor.index') }}">Mentors</a>
+
                                     </div>
                                 </li>
 

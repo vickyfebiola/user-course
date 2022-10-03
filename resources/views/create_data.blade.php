@@ -8,8 +8,12 @@
             <form action="{{ route('data.store') }}" method="post">
             @csrf
                 <div class="form-group">
-                    <label for="member">Member Name</label>
-                    <input type="text" class="form-control" name="member_name">
+                <label for="member">Member Name</label>
+                    <select name="member_name" class="form-control">
+                        @foreach($members as $member)
+                        <option value="{{$member->id_member}}">{{$member->member}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group">

@@ -9,7 +9,7 @@
             @csrf
                 <div class="form-group">
                     <label for="mentor">Mentor Name</label>
-                    <input type="text" class="form-control" name="mentor_name">
+                    <input type="text" class="form-control" name="mentor_name" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Tambah</button>
             </form>

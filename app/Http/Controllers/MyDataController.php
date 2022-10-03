@@ -8,6 +8,7 @@ use App\Models\Member;
 use App\Models\Course;
 use App\Models\Mentor;
 use App\Models\UserCourse;
+use DB;
 
 use DataTables;
 
@@ -56,13 +57,10 @@ class MyDataController extends Controller
             'course_name' => 'required|max:30',
             'mentor_name' => 'required|max:30',
         ]);
-        $member = new Member();
-        $member->member = $request->member_name;
-        $member->save();
 
         $data = new UserCourse();
         
-        $data->id_member = $member->id_member;
+        $data->id_member = $request->member_name;
         $data->id_course = $request->course_name;
         $data->id_mentor = $request->mentor_name;
 
@@ -112,8 +110,8 @@ class MyDataController extends Controller
                     $btn = '
                         <div class="text-center">
                             <div class="btn-group">
-                                <a href="#" class="edit btn btn-success btn-sm">Edit</a>
-                                <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                                <a href="'.route('member.edit',['id_member' => $row->id_member]).'" class="edit btn btn-success btn-sm">Edit</a>
+                                <a href="'.route('member.delete',['id_member' => $row->id_member]).'" class="btn btn-danger btn-sm">Hapus</a>
                             </div>
                         </div>
                 ';
@@ -135,13 +133,30 @@ class MyDataController extends Controller
             'member_name' => 'required|max:80',
         ]);
 
-        $data = new Membber();
+        $data = new Member();
         $data->member = $request->member_name;
         $data->save();
 
         return redirect(route('member.index'))->with('pesan','Data Berhasil Ditambahkan');
     }
+    
+    public function edit_member($id_member){ 
+        $data = Member::find($id_member);
+        return view('update_member', compact("data"));
+    }
 
+    public function update_member(Request $request, $id_member){
+        $data = Member::find($id_member);
+        $data->member = $request->member_name;
+        $data->save();
+        return redirect(route('member.index'))->with('pesan','Data Berhasil Diupdate');
+    }
+
+    public function delete_member($id_member) {
+        $data = Member::find($id_member);
+        $data->delete();
+        return redirect(route("member.index"));
+    }
 
     // Controller Courses
     public function course(Request $request) {
@@ -185,13 +200,13 @@ class MyDataController extends Controller
     }
 
     public function edit_course($id_course){ 
-        $data = Course::all();
+        $data = Course::find($id_course);
         return view('update_course', compact("data"));
     }
 
     public function update_course(Request $request, $id_course){
         $data = Course::find($id_course);
-        $data->id_course = $request->course_name;
+        $data->course = $request->course_name;
         $data->save();
         return redirect(route('course.index'))->with('pesan','Data Berhasil Diupdate');
     }
@@ -213,8 +228,8 @@ class MyDataController extends Controller
                     $btn = '
                         <div class="text-center">
                             <div class="btn-group">
-                                <a href="#" class="edit btn btn-success btn-sm">Edit</a>
-                                <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                                <a href="'.route('mentor.edit',['id_mentor' => $row->id_mentor]).'" class="edit btn btn-success btn-sm">Edit</a>
+                                <a href="'.route('mentor.delete',['id_mentor' => $row->id_mentor]).'" class="btn btn-danger btn-sm">Hapus</a>
                             </div>
                         </div>
                 ';
@@ -243,23 +258,72 @@ class MyDataController extends Controller
 
         return redirect(route('mentor.index'))->with('pesan','Data Berhasil Ditambahkan');
     }
+
+    public function edit_mentor($id_mentor){ 
+        $data = Mentor::find($id_mentor);
+        return view('update_mentor', compact("data"));
+    }
+
+    public function update_mentor(Request $request, $id_mentor){
+        $data = Mentor::find($id_mentor);
+        $data->mentor = $request->mentor_name;
+        $data->save();
+        return redirect(route('mentor.index'))->with('pesan','Data Berhasil Diupdate');
+    }
+
+    public function delete_mentor($id_mentor) {
+        $data = Mentor::find($id_mentor);
+        $data->delete();
+        return redirect(route("mentor.index"));
+    }
+
     public function soal(Request $request) {
         $data = UserCourse::all();       
         $members = Member::all();
         $courses = Course::all();
-        $mentors = Mentor::all();
+        // $mentors = UserCourse::select(DB::raw('MAX(id_mentor) as max_course'))->groupBy('id_mentor')->get();
+        // $mentors =UserCourse::whereRaw('id_mentor = (select a.id_mentor FROM (SELECT id_mentor, max(y.num) FROM (SELECT id_mentor, COUNT(id_mentor) AS num
+        // FROM user_courses group by id_mentor) y) a)')->get();
+        
+        
+        // $mentor_name = Mentor::select('mentor')->where('id_mentor','=',$mentors->id_mentor)->get();
 
-        return view('soal', compact("data","members","courses","mentors"));
+        // return view('soal', compact("data","members","courses","mentors"));
+
+        $countMentors = DB::select('SELECT mentors.mentor,
+                        COUNT(user_courses.id_mentor) AS course_num
+                        FROM mentors
+                        LEFT JOIN user_courses ON mentors.id_mentor = user_courses.id_mentor
+                        GROUP BY mentors.mentor
+                        LIMIT 1;');
+        
+        $countGolang = DB::select('SELECT courses.course,
+                        COUNT(user_courses.id_course) AS member_num
+                        FROM courses
+                        LEFT JOIN user_courses ON courses.id_course = user_courses.id_course
+                        WHERE courses.course = "Golang"
+                        GROUP BY courses.course;');
+
+        $mostCourse = DB::select('SELECT members.member,
+                        COUNT(user_courses.id_member) AS course_num
+                        FROM members
+                        LEFT JOIN user_courses ON members.id_member = user_courses.id_member
+                        GROUP BY members.member
+                        ORDER BY course_num DESC
+                        LIMIT 1;');
+
+        return view('soal', compact('countMentors', 'countGolang', 'mostCourse'));
     }
 
     public function countMentor()
     {
+        
         $data = Mentor::all();
 
-        // foreach ($mentors as $mentor) 
+        foreach ($mentors as $mentor) 
         {
-            $max_mentor = Course::where('id_mentor', $data->mentor_id)->count();
-            Mentor::where('id_mentor', $data->mentor_id)->update(['total_course' => $max_mentor
+            $maxMentor = Course::where('id_mentor', $data->mentor_id)->count();
+            Mentor::where('id_mentor', $data->mentor_id)->update(['total_course' => $maxMentor
             ]);
         }
 
@@ -268,16 +332,8 @@ class MyDataController extends Controller
     
     public function countMember()
     {
-        $data = Member::all();
-
-        // foreach ($members as $member) 
-        {
-            $max_member = Course::where('id_member', $data->member_id)->count();
-            Member::where('id_member', $data->member_id)->update(['total_course' => $max_member
-            ]);
-        }
-
-        return redirect(route('soal'));
+        $data = Member::select('id_member', 'member', DB::raw('MAX(id) as max course'));
+        dd($data);
     }
 
 

@@ -2,16 +2,18 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Create Data</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Update Mentor</h6>
     </div>
         <div class="card-body">
-            <form action="{{ route('mentor.store') }}" method="post">
+            <form action="{{ route('mentor.update',['id_mentor' => $data->id_mentor])}}" method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
                 <div class="form-group">
                     <label for="mentor">Mentor Name</label>
-                    <input type="text" class="form-control" name="mentor_name">
+                    <input type="text" class="form-control" name="mentor_name" value="{{ $data->mentor }}" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Tambah</button>
+                
+                <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>

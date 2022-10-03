@@ -8,13 +8,14 @@
                 <table class="table table-bordered data-table" id="dataTable">
                     <thead>
                         <tr>
+                            <th>no</th>
                             <th>id_member</th>
                             <th>member_name</th>
                             <th>id_course</th>
                             <th>course</th>
                             <th>id_mentor</th>
                             <th>mentor</th>
-                            <th> </th>
+                            <th>aksi</th>
                         </tr>
                     </thead>
                 </table>
@@ -31,6 +32,12 @@
         serverSide: true,
         ajax: "{{ route('data.index') }}",
         columns: [
+            { 
+                data: 'DT_RowIndex',
+                name: 'DT_RowIndex',
+                orderable: false,
+                searchable: false,
+            },
             {
                 data: 'id_member',
                 name: 'members.id_member',

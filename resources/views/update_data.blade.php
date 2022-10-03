@@ -10,7 +10,11 @@
             @csrf
                 <div class="form-group">
                     <label for="member">Member Name</label>
-                    <input type="text" class="form-control" name="member_name" value="{{ $members->member }}">
+                    <select name="member_name" class="form-control">
+                        @foreach($members as $member)
+                        <option value="{{$member->id_member}}" @if($data->id_member == $member->id_member) selected @endif>{{$member->member}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group">
