@@ -1,4 +1,5 @@
 @extends('template.base')
+@section('database') active @endsection
 @section('content')
     <h1>Members</h1>
     <div class="row">

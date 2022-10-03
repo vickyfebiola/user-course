@@ -1,8 +1,9 @@
 @extends('template.base')
+@section('beranda') active @endsection
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Update Data</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Edit Data</h6>
     </div>
         <div class="card-body">
             <form action="{{ route('data.update',['id' => $data->id])}}" method="post" enctype="multipart/form-data">
@@ -35,7 +36,7 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Edit</button>
             </form>
         </div>
     </div>

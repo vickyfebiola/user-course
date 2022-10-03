@@ -19,14 +19,14 @@
                         <div>
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('data.index') }}">Beranda <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link @yield('beranda')" href="{{ route('data.index') }}">Beranda <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('soal') }}">Soal</a>
+                                    <a class="nav-link @yield('soal')" href="{{ route('soal') }}">Soal</a>
                                 </li>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle @yield('database')" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Database
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">

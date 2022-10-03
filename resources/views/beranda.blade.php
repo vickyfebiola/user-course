@@ -1,4 +1,5 @@
 @extends('template.base')
+@section('beranda') active @endsection
 @section('content')
     <h1>User Courses</h1>
     <div class="row">

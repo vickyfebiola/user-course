@@ -1,8 +1,9 @@
 @extends('template.base')
+@section('database') active @endsection
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Update Mentor</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Edit Mentor</h6>
     </div>
         <div class="card-body">
             <form action="{{ route('mentor.update',['id_mentor' => $data->id_mentor])}}" method="post" enctype="multipart/form-data">
@@ -13,7 +14,7 @@
                     <input type="text" class="form-control" name="mentor_name" value="{{ $data->mentor }}" required>
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Edit</button>
             </form>
         </div>
     </div>

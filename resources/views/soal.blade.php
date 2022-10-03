@@ -1,4 +1,5 @@
 @extends('template.base')
+@section('soal') active @endsection
 @section('content')
     <h3>Jawaban Soal Skill MTM</h3><br>
     <div class="row">
