@@ -1,66 +1,28 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Tentang Program
+User Courses adalah program yang dapat digunakan untuk mengelola data user course dan dikembangkan menggunakan framework laravel 9 dan php 8. Terdapat 4 tabel dan fitur CRUD, yaitu:
+- Tabel user_courses
+- Tabel members
+- Tabel courses
+- Tabel mentors
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Tools
+- Backend: PHP v8
+- Framework PHP : Laravel 9
+- Database : mysql
 
-## About Laravel
+## Tampilan Program
+- Halaman Beranda - User Courses
+![screencapture-127-0-0-1-8000-2022-10-03-08_45_48](https://user-images.githubusercontent.com/30969526/193548983-5bdf1eaa-3af3-4dff-97fe-5186ce7e18f2.png)
+- Halaman Tambah Data
+![screencapture-127-0-0-1-8000-create-2022-10-03-09_14_13](https://user-images.githubusercontent.com/30969526/193549039-7474626b-2e85-44d4-9c88-db74c12ef338.png)
+- Halaman Edit Data
+![screencapture-127-0-0-1-8000-edit-1-2022-10-03-09_14_01](https://user-images.githubusercontent.com/30969526/193549078-05bb6448-7784-4dfb-be75-21170e5c26f7.png)
+- Halaman Soal dan Jawaban
+![screencapture-127-0-0-1-8000-soal-2022-10-03-08_46_32](https://user-images.githubusercontent.com/30969526/193549103-e6e7d703-fae8-4884-8d73-b0f9b05f92d9.png)
+- Halaman Database (Members, Courses, Mentors)
+![screencapture-127-0-0-1-8000-members-2022-10-03-08_46_51](https://user-images.githubusercontent.com/30969526/193549131-91955f0a-6ba8-4862-94b0-4f8fbf323f3f.png)
+![screencapture-127-0-0-1-8000-courses-2022-10-03-08_47_05](https://user-images.githubusercontent.com/30969526/193549168-db324508-f719-4594-a1b4-2b01ac609769.png)
+![screencapture-127-0-0-1-8000-mentors-2022-10-03-08_47_22](https://user-images.githubusercontent.com/30969526/193549191-c042d5a3-44cf-474c-a097-31f497bad77e.png)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Laravel
+Dokumentasi laravel dapat dipelajari dan diakses melalui link: [documentation](https://laravel.com/docs) atau video tutorial lainnya.
