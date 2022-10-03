@@ -158,6 +158,7 @@ class MyDataController extends Controller
         return redirect(route("member.index"));
     }
 
+    
     // Controller Courses
     public function course(Request $request) {
         if ($request->ajax()) {
@@ -216,6 +217,7 @@ class MyDataController extends Controller
         $data->delete();
         return redirect(route("course.index"));
     }
+
 
     // Controller Mentor
     public function mentor(Request $request) {
@@ -277,18 +279,12 @@ class MyDataController extends Controller
         return redirect(route("mentor.index"));
     }
 
+
+    // Controller Soal
     public function soal(Request $request) {
         $data = UserCourse::all();       
         $members = Member::all();
         $courses = Course::all();
-        // $mentors = UserCourse::select(DB::raw('MAX(id_mentor) as max_course'))->groupBy('id_mentor')->get();
-        // $mentors =UserCourse::whereRaw('id_mentor = (select a.id_mentor FROM (SELECT id_mentor, max(y.num) FROM (SELECT id_mentor, COUNT(id_mentor) AS num
-        // FROM user_courses group by id_mentor) y) a)')->get();
-        
-        
-        // $mentor_name = Mentor::select('mentor')->where('id_mentor','=',$mentors->id_mentor)->get();
-
-        // return view('soal', compact("data","members","courses","mentors"));
 
         $countMentors = DB::select('SELECT mentors.mentor,
                         COUNT(user_courses.id_mentor) AS course_num
@@ -314,27 +310,5 @@ class MyDataController extends Controller
 
         return view('soal', compact('countMentors', 'countGolang', 'mostCourse'));
     }
-
-    public function countMentor()
-    {
-        
-        $data = Mentor::all();
-
-        foreach ($mentors as $mentor) 
-        {
-            $maxMentor = Course::where('id_mentor', $data->mentor_id)->count();
-            Mentor::where('id_mentor', $data->mentor_id)->update(['total_course' => $maxMentor
-            ]);
-        }
-
-        return redirect(route('soal'));
-    }
-    
-    public function countMember()
-    {
-        $data = Member::select('id_member', 'member', DB::raw('MAX(id) as max course'));
-        dd($data);
-    }
-
 
 }
